@@ -1,0 +1,239 @@
+:root {
+  /* Premium Dark Theme */
+  --color-bg: #0f0f13;
+  /* Deep Blue-Black */
+  --color-surface: #1e1e24;
+  /* Rich Dark Grey */
+  --color-surface-hover: #292931;
+
+  /* Vibrant & Cool Gradient Colors */
+  --color-primary: #ff3e6c;
+  /* Vivid Pink/Red */
+  --color-secondary: #ffb86c;
+  /* Warm Orange/Gold */
+  --gradient-primary: linear-gradient(135deg, #ff3e6c, #ff914d);
+  /* Pink to Orange */
+  --gradient-dark: linear-gradient(145deg, #1e1e24, #16161a);
+
+  --color-text: #ffffff;
+  --color-text-muted: #9a9a9a;
+  --color-border: #2f2f36;
+
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 20px rgba(255, 62, 108, 0.3);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.4);
+
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255, 62, 108, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(255, 145, 77, 0.05) 0%, transparent 40%);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(30, 30, 36, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Components */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  font-size: 1rem;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 62, 108, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(255, 62, 108, 0.6);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.card {
+  background: var(--gradient-dark);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 62, 108, 0.3);
+  box-shadow: var(--shadow-lg);
+}
+
+.input {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  background: #18181c;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(255, 62, 108, 0.15);
+  background: #202025;
+}
+
+/* Category Navbar */
+.category-nav {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 16px 4px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: sticky;
+  top: 70px;
+  /* Below main nav */
+  z-index: 90;
+  margin-bottom: 20px;
+}
+
+.category-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.category-chip {
+  padding: 10px 24px;
+  background: var(--color-surface);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.category-chip:hover {
+  color: var(--color-text);
+  background: var(--color-surface-hover);
+}
+
+.category-chip.active {
+  background: var(--gradient-primary);
+  color: white;
+  border-color: transparent;
+  box-shadow: var(--shadow-glow);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-content {
+  background: #1e1e24;
+  width: 100%;
+  max-width: 400px;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

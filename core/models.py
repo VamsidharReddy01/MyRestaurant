@@ -1,4 +1,5 @@
 from django.db import models
+from decimal import Decimal
 
 class Restaurant(models.Model):
     name = models.CharField(max_length=200)
@@ -82,6 +83,11 @@ class Order(models.Model):
         max_length=20,
         choices=STATUS_CHOICES,
         default='pending'
+    )
+    total_amount = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        default=Decimal('0.00')
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
