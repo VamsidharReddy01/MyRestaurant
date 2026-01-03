@@ -5,12 +5,12 @@ import axios from 'axios';
 import { ArrowLeft } from 'lucide-react';
 
 export default function Checkout() {
-    const { cartItems, cartTotal, clearCart } = useCart();
+    const { cartItems, cartTotal, clearCart, customerDetails } = useCart();
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        customer_name: '',
-        table_number: ''
+        customer_name: customerDetails?.name || '',
+        table_number: customerDetails?.table || ''
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState(null);
